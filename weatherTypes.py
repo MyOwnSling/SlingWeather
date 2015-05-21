@@ -119,5 +119,5 @@ class Weather():
         self.currently = Currently(jsonDict)
         self.minutely = Minutely(jsonDict)
         self.hourly = Hourly(jsonDict)
-        self.daily = None
-        self.location = None
+        self.daily = Daily(jsonDict)
+        self.location = Location(jsonDict)
