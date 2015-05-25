@@ -6,8 +6,12 @@ import datetime as dt
 import sys
 
 
-class _dataPoint():
+class _dataPoint(dict):
     def __init__(self, dataBlock):
+        # Assign dataBlock dictionary to this object's inherited dict (iteratively)
+        for key in dataBlock:
+            self[key] = dataBlock[key]
+
         # Get all of the values in the data block
         self.time       = dataBlock.get('time')
         self.summary    = dataBlock.get('summary')
@@ -44,20 +48,28 @@ class _dataPoint():
         # Convert all of the time values from raw to human-readable
         if self.time:
             self.time = dt.datetime.fromtimestamp(self.time)
+            self['time'] = self.time
         if self.apparentTemperatureMaxTime:
             self.apparentTemperatureMaxTime = dt.datetime.fromtimestamp(self.apparentTemperatureMaxTime)
+            self['apparentTemperatureMaxTime'] = self.apparentTemperatureMaxTime
         if self.apparentTemperatureMinTime:
             self.apparentTemperatureMinTime = dt.datetime.fromtimestamp(self.apparentTemperatureMinTime)
+            self['apparentTemperatureMinTime'] = self.apparentTemperatureMinTime
         if self.precipIntensityMaxTime:
             self.precipIntensityMaxTime = dt.datetime.fromtimestamp(self.precipIntensityMaxTime)
+            self['precipIntensityMaxTime'] = self.precipIntensityMaxTime
         if self.sunriseTime:
             self.sunriseTime = dt.datetime.fromtimestamp(self.sunriseTime)
+            self['sunriseTime'] = self.sunriseTime
         if self.sunsetTime:
             self.sunsetTime = dt.datetime.fromtimestamp(self.sunsetTime)
+            self['sunsetTime'] = self.sunsetTime
         if self.temperatureMaxTime:
             self.temperatureMaxTime = dt.datetime.fromtimestamp(self.temperatureMaxTime)
+            self['temperatureMaxTime'] = self.temperatureMaxTime
         if self.temperatureMinTime:
             self.temperatureMinTime = dt.datetime.fromtimestamp(self.temperatureMinTime)
+            self['temperatureMinTime'] = self.temperatureMinTime
 
 class Currently(_dataPoint):
     def __init__(self, jsonDict):

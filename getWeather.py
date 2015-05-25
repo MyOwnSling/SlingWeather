@@ -39,6 +39,8 @@ print ''
 print weather.hourly.summary
 print weather.hourly.hours[12].time
 print weather.hourly.hours[12].temperature
+# for hour in weather.hourly.hours:
+#     print hour.time, hour.temperature
 print weather.hourly.hours[12].summary
 print ''
 
@@ -54,5 +56,10 @@ print weather.location.latitude, weather.location.longitude
 print weather.location.timezone
 print weather.location.offset
 print ''
+
+print "**************************"
+for minute in weather.minutely.minutes:
+    for metric in minute:
+        print metric, ":", minute[metric]
 
 print 'Done'
