@@ -8,3 +8,12 @@ A weather forecast retrieval utility based on the Dark Sky Forecast API. This ut
 [Other]
 	developer.forecast.io
 
+
+AWS
+free ec2 instance
+	install awscli
+SNS
+	setup SNS topic (US East region)
+	subscribe using sms protocol
+	push using aws cli tools
+
