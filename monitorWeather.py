@@ -11,6 +11,8 @@ def evalWeather(apikey, location, threshold=.5):
     minutes = weather.minutely.minutes
     i = 1
     for min in minutes:
+        if i > 30:
+            break
         if min.precipProbability != None:
             if min.precipProbability >= threshold:
                 msg = str(min.precipProbability * 100) + "% chance of " + min.precipType + " in " + str(i) + " minute(s)"
